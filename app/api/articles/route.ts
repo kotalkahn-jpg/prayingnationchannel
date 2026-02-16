@@ -54,3 +54,24 @@ export async function POST(req: Request) {
     );
   }
 }
+
+export async function PATCH(req: Request) {
+  const { id, title, content, image_url, is_published } = await req.json();
+
+  const { error } = await supabase
+    .from("articles")
+    .update({
+      title,
+      content,
+      image_url,
+      is_published,
+      updated_at: new Date(),
+    })
+    .eq("id", id);
+
+  if (error) {
+    return NextResponse.json({ error }, { status: 500 });
+  }
+
+  return NextResponse.json({ success: true });
+}

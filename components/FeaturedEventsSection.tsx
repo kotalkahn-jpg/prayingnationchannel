@@ -1,7 +1,7 @@
 import { supabase } from "../lib/supabase";
-import Countdown from "./countdown";
 import Reveal from "./animation/Reveal";
 import { fadeUp } from "./animation/motionVariants";
+import Countdown from "./countdown";
 
 export default async function FeaturedEventsSection() {
   const { data: events } = await supabase
@@ -13,61 +13,88 @@ export default async function FeaturedEventsSection() {
 
   if (!events || events.length === 0) return null;
 
-  const mainEvent = events[0];
-  const secondaryEvents = events.slice(1);
-
   return (
     <section className="bg-[#0B1E3D] py-24 px-6 text-white">
       <div className="max-w-7xl mx-auto">
 
-        <Reveal variants={fadeUp}>
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Upcoming Events
-            </h2>
-            <div className="w-24 h-1 bg-[#D4AF37] mx-auto mt-6 rounded-full"></div>
-          </div>
-        </Reveal>
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold">
+            Upcoming Events
+          </h2>
+          <div className="w-24 h-1 bg-[#D4AF37] mx-auto mt-6 rounded-full"></div>
+        </div>
 
+        {/* 3 Event Cards in a Row */}
         <div className="grid md:grid-cols-3 gap-10">
 
-          {/* Main Featured Event */}
-          <Reveal variants={fadeUp}>
-            <div className="md:col-span-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-10 shadow-lg">
+          {events.map((event, index) => {
+            const date = new Date(event.event_date);
+            const day = date.getDate();
+            const month = date.toLocaleString("default", { month: "short" });
+            const time = date.toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            });
 
-              <h3 className="text-3xl font-bold mb-4 text-[#D4AF37]">
-                {mainEvent.title}
-              </h3>
+            return (
+              <Reveal key={event.id} variants={fadeUp} delay={index * 0.1}>
+                <div
+                  className={`relative overflow-hidden rounded-xl p-5 flex flex-col justify-between transition-all duration-500
+                  ${
+                    index === 0
+                      ? "bg-[#D4AF37]/10 border border-[#D4AF37]/40 shadow-[0_10px_40px_rgba(212,175,55,0.2)]"
+                      : "bg-white/5 backdrop-blur-sm border border-white/10 hover:-translate-y-3 hover:shadow-[0_15px_40px_rgba(212,175,55,0.25)]"
+                  }`}
+                >
 
-              <p className="text-gray-300 line-clamp-3">
-                {mainEvent.description}
-              </p>
+                  {/* Next Event Badge */}
+                  {index === 0 && (
+                    <div className="text-xs uppercase tracking-wider text-[#D4AF37] mb-3">
+                      Next Event
+                    </div>
+                  )}
 
-              <Countdown targetDate={mainEvent.event_date} />
+                  {/* Date Badge */}
+                  <div className="mb-6">
+                    <div className="flex flex-col items-center justify-center bg-[#D4AF37] text-[#0B1E3D] rounded-lg px-4 py-3 w-fit shadow-md">
+                      <span className="text-xl font-bold leading-none">
+                        {day}
+                      </span>
+                      <span className="text-xs uppercase tracking-wide">
+                        {month}
+                      </span>
+                    </div>
+                  </div>
 
-            </div>
-          </Reveal>
-
-          {/* Smaller Events */}
-          <div className="space-y-8">
-            {secondaryEvents.map((event, index) => (
-              <Reveal key={event.id} variants={fadeUp} delay={index * 0.15}>
-                <div className="bg-white/5 border border-white/10 rounded-xl p-6 hover:shadow-[0_10px_30px_rgba(212,175,55,0.2)] transition-all duration-500">
-
-                  <h4 className="text-xl font-semibold mb-2 group-hover:text-[#D4AF37]">
+                  {/* Title */}
+                  <h3 className="text-2xl font-semibold mb-2 group-hover:text-[#D4AF37] transition">
                     {event.title}
-                  </h4>
+                  </h3>
 
-                  <p className="text-gray-400 text-sm line-clamp-2">
+                  {/* Description */}
+                  <p className="text-gray-300 line-clamp-1 flex-grow">
                     {event.description}
                   </p>
 
-                  <Countdown targetDate={event.event_date} />
+                  {/* Time */}
+                  <p className="text-sm text-gray-400 mt-4">
+                    {time}
+                  </p>
 
+                  {/* Countdown */}
+                  <div className="mt-6">
+                    <Countdown targetDate={event.event_date} />
+                  </div>
+
+                  {/* Gold Bottom Animation */}
+                  {index !== 0 && (
+                    <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-[#D4AF37] transition-all duration-500 group-hover:w-full"></div>
+                  )}
                 </div>
               </Reveal>
-            ))}
-          </div>
+            );
+          })}
 
         </div>
       </div>

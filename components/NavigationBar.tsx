@@ -55,9 +55,7 @@ export default function NavigationBar() {
         <div className="hidden md:flex items-center space-x-8 text-white font-medium">
           <Link href="/" className="hover:text-[#D4AF37] transition">Home</Link>
           <Link href="/about" className="hover:text-[#D4AF37] transition">About</Link>
-          <Link href="/ministries" className="hover:text-[#D4AF37] transition">Ministries</Link>
           <Link href="/articles" className="hover:text-[#D4AF37] transition">Articles</Link>
-          <Link href="/events" className="hover:text-[#D4AF37] transition">Events</Link>
           <Link href="/contact" className="hover:text-[#D4AF37] transition">Contact</Link>
 
           <Link
