@@ -16,7 +16,7 @@ export default function Home() {
       <FeaturedEventsSection />
       <PartnersSection />
       <NewsletterSection />
-      <Footer />
+      
       <FloatingWhatsApp />
     </>
   );
