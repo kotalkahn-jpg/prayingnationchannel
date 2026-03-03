@@ -79,9 +79,9 @@ export default function NavigationBar() {
         <div className="md:hidden bg-[#0B1E3D] text-white flex flex-col items-center space-y-6 py-6 shadow-xl">
           <Link href="/" onClick={closeMenu}>Home</Link>
           <Link href="/about" onClick={closeMenu}>About</Link>
-          <Link href="/ministries" onClick={closeMenu}>Ministries</Link>
+          
           <Link href="/articles" onClick={closeMenu}>Articles</Link>
-          <Link href="/events" onClick={closeMenu}>Events</Link>
+         
           <Link href="/contact" onClick={closeMenu}>Contact</Link>
 
           <Link

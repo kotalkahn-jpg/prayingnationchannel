@@ -33,9 +33,10 @@ export default async function ArticlePage({
           />
         )}
 
-        <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-          {article.content}
-        </p>
+        <div
+  className="prose prose-lg max-w-none"
+  dangerouslySetInnerHTML={{ __html: article.content }}
+/>
       </div>
     </main>
   );

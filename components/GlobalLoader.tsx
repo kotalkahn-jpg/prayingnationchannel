@@ -10,32 +10,19 @@ export default function GlobalLoader({
 }) {
   const [loadingDone, setLoadingDone] = useState(false);
 
-  // 🔒 Lock scroll while loading
   useEffect(() => {
-    if (!loadingDone) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    const timer = setTimeout(() => {
+      setLoadingDone(true);
+    }, 3000);
 
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [loadingDone]);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
-      {!loadingDone && (
-        <Loader onFinish={() => setLoadingDone(true)} />
-      )}
+      {!loadingDone && <Loader />}
 
-      <div
-        style={{
-          visibility: loadingDone ? "visible" : "hidden",
-        }}
-      >
-        {children}
-      </div>
+      {loadingDone && children}
     </>
   );
 }
