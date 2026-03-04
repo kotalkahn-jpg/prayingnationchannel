@@ -71,9 +71,17 @@ export default function OurStorySection() {
     />
   </div>
 
-  <button className="mt-8 inline-flex items-center px-6 py-3 rounded-md bg-[#D4AF37] text-[#0B1E3D] font-semibold hover:brightness-110 transition shadow-md">
-    Discover Our Mission
-  </button>
+  <button
+  onClick={() =>
+    window.open(
+      "https://www.facebook.com/profile.php?id=61587830131997",
+      "_blank"
+    )
+  }
+  className="mt-8 inline-flex items-center px-6 py-3 rounded-md bg-[#D4AF37] text-[#0B1E3D] font-semibold hover:brightness-110 transition shadow-md"
+>
+  Discover Our Mission
+</button>
 
 </div>
 

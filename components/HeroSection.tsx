@@ -32,7 +32,7 @@ export default function HeroSection() {
             </span>
 
             <span className="absolute inset-0 text-[#D4AF37] blur-lg opacity-25">
-              Spreading Faith & Hope Through Prayer
+              Spreading Faith, sound doctrine
             </span>
           </h3>
         </SlideIn>
