@@ -1,0 +1,13 @@
+[33me303aa8[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m tryed to fix route supabase problem
+[33m65a5e92[m supabase fix
+[33m3e71987[m restore strict supabase client typing
+[33m3382bf5[m prevent supabase crush on build
+[33m3e5d425[m Enhance partners section layout and loader stability
+[33m575a5be[m fixed route problem
+[33m4ff024e[m Removed invalid page.tsx from API directory
+[33m694a98a[m Removed invalid page.tsx from API directory
+[33mf2bd58c[m Removed invalid page.tsx from API directory
+[33m2d9e331[m Added animated gold ring loader with fade transition and client LoaderProvider integration
+[33m8d0ae28[m Fix crash issue and restore stable working version
+[33m057b3ad[m Completed admin events manager and backend automation system
+[33mdec1399[m Full project commit - animations, events, countdown, verses

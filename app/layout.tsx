@@ -1,7 +1,6 @@
 import "./globals.css";
 import GlobalLoader from "@/components/GlobalLoader";
-import NavigationBar from "@/components/NavigationBar";
-import Footer from "@/components/Footer";
+import SiteLayoutWrapper from "@/components/SiteLayoutWrapper";
 
 export default function RootLayout({
   children,
@@ -12,9 +11,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="overflow-x-hidden">
         <GlobalLoader>
-          <NavigationBar />
-          {children}
-          <Footer />
+          <SiteLayoutWrapper>
+            {children}
+          </SiteLayoutWrapper>
         </GlobalLoader>
       </body>
     </html>
